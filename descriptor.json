@@ -1,0 +1,83 @@
+{
+    "name": "Nucleidetect",
+    "description": "Detects nuclei. See github for details. Version 0.1",
+    "schema-version": "cytomine-0.1",
+    "container-image": {
+        "image": "nucleidetect",
+        "type": "singularity"
+    },
+    "command-line": "python /nucleidetect/segmentation3.py --basedir /nucleidetect --models [@NN_MODELS] --preprocessing caffe --channels 2 --host [@HOST] --public_key [PUBLIC_KEY] --private_key [PRIVATE_KEY] --ann_id [ANN_ID] --add_annotations --project_id [CYTOMINE_ID_PROJECT] --software_id [CYTOMINE_ID_SOFTWARE]",
+    "inputs": [
+        {
+            "id": "ann_id",
+            "value-key": "[@ANN_ID]",
+            "name": "Annotation id",
+            "description": "Find nuclei within these annotations",
+            "set-by-server": false,
+            "optional": false,
+            "type": "Number"
+        },
+        {
+            "id": "models",
+            "value-key": "[@NN_MODELS]",
+            "name": "NN models to use",
+            "description": "Neural networks to use",
+            "set-by-server": false,
+            "default": "best_resnet152_2_fold0.h5.hdf5 best_resnet152_2_fold1.h5.hdf5 best_resnet152_2_fold3.h5.hdf5",
+            "optional": true,
+            "type": "String"
+        },
+        {
+            "id": "term",
+            "value-key": "[@TERM]",
+            "name": "Term to attach into detected nuclei",
+            "description": "Terms list pulled from project ontology",
+            "set-by-server": false,
+            "optional": false,
+            "type": "Domain",
+            "uri": "/api/ontology/$currentOntology$/term.json",
+            "uri-print-attribute": "name"
+        },
+        {
+            "id": "cytomine_host",
+            "value-key": "[@HOST]",
+            "name": "Cytomine host",
+            "set-by-server": true,
+            "optional": false,
+            "type": "String"
+        },
+        {
+            "id": "cytomine_public_key",
+            "value-key": "[@PUBLIC_KEY]",
+            "name": "Cytomine public key",
+            "set-by-server": true,
+            "optional": false,
+            "type": "String"
+        },
+        {
+            "id": "cytomine_private_key",
+            "value-key": "[@PRIVATE_KEY]",
+            "name": "Cytomine private key",
+            "set-by-server": true,
+            "optional": false,
+            "type": "String"
+        },
+        {
+            "id": "cytomine_id_project",
+            "value-key": "[@PROJECT_ID]",
+            "name": "Cytomine project ID",
+            "set-by-server": true,
+            "optional": false,
+            "type": "Number"
+        },
+        {
+            "id": "cytomine_id_software",
+            "value-key": "[@SOFTWARE_ID]",
+            "name": "Cytomine software ID",
+            "set-by-server": true,
+            "optional": false,
+            "type": "Number"
+        }
+    ]
+}
+

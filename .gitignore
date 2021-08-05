@@ -1,0 +1,7 @@
+*.bak
+*.swp
+*.sif
+images/*.png
+nn_models/*hdf5
+nn_models/*h5
+__pycache__

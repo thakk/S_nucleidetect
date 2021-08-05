@@ -1,0 +1,68 @@
+Bootstrap: docker
+From: tensorflow/tensorflow:2.4.2
+Stage: build
+
+%setup
+
+%files
+
+%post
+        #apt update
+    apt install -y wget
+	#apt install -y git
+	#apt install -y python3-pip
+	#apt install -y libblas-dev liblapack-dev
+	#apt install -y libopenblas-dev
+	#apt install -y gfortran-9
+	#apt install -y gfortran
+	#apt install -y libatlas-base-dev
+	#pip install matplotlib tqdm pandas
+	#pip install scipy==1.1.0 
+	#pip install scipy
+	#pip install torch imread
+        #pip install h5py<3.0.0 
+	#pip install h5py
+        #pip install sklearn scikit-image 
+	#pip install lightgvm 
+	#pip install torchvision imgaug
+	#pip install TkAgg
+	#pip install PyQt5==5.9.2
+	#pip install keras
+	#pip install keras_applications
+	#pip install keras_preprocessing
+	#pip install tensorflow
+	#pip install --upgrade keras keras-applications
+	/usr/bin/python3 -m pip install --upgrade pip
+	#pip install numpy #already satisfied
+	pip install pandas
+	pip install matplotlib
+	pip install scipy
+	pip install scikit-learn
+	pip install keras
+	pip install keras_applications
+	pip install keras_resnet
+	pip install opencv-python-headless
+	pip install tqdm
+	pip install imutils
+    # For uliege py client
+	#curl -s https://packagecloud.io/install/repositories/cytomine-uliege/Cytomine-python-client/script.python.sh | bash
+	#pip install cytomine-python-client
+    # For official py client
+    pip install requests requests-toolbelt cachecontrol
+    #curl -o v2.2.2.tar.gz https://github.com/cytomine/Cytomine-python-client/archive/refs/tags/v2.2.2.tar.gz
+    wget https://github.com/cytomine/Cytomine-python-client/archive/refs/tags/v2.2.2.tar.gz
+    tar zxvf v2.2.2.tar.gz
+    cd Cytomine-python-client-2.2.2
+    pip install .
+
+%environment
+
+%runscript
+    echo "Container was created $NOW"
+    echo "Arguments received: $*"
+    exec echo "$@"
+
+%help
+    Nucleidetect
+
+

@@ -1,0 +1,5 @@
+*.bak
+*.swp
+*.sif
+images/*.png
+__pycache__
