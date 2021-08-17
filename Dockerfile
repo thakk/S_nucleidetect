@@ -14,6 +14,8 @@ RUN	pip install imutils
 RUN	curl -s https://packagecloud.io/install/repositories/cytomine-uliege/Cytomine-python-client/script.python.sh | bash
 RUN	pip install cytomine-python-client
 
-RUN mkdir /nucleidetect
-WORKDIR /nucleidetect
-ADD * /nucleidetect/
+ADD app /app
+WORKDIR /app
+
+ENTRYPOINT ["python","/app/segmentation3.py"]
+

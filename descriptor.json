@@ -3,14 +3,15 @@
     "description": "Detects nuclei. See github for details. Version 0.1",
     "schema-version": "cytomine-0.1",
     "container-image": {
-        "image": "nucleidetect",
+        "image": "thakkinen/s_nucleidetect",
         "type": "singularity"
     },
-    "command-line": "python /nucleidetect/segmentation3.py --basedir /nucleidetect --models [@NN_MODELS] --preprocessing caffe --channels 2 --host [@HOST] --public_key [PUBLIC_KEY] --private_key [PRIVATE_KEY] --ann_id [ANN_ID] --add_annotations --project_id [CYTOMINE_ID_PROJECT] --software_id [CYTOMINE_ID_SOFTWARE]",
+    "command-line": "python /nucleidetect/segmentation3.py --basedir /nucleidetect [NN_MODELS] --preprocessing caffe --channels 2 [HOST] [PUBLIC_KEY] [PRIVATE_KEY] [ANN_ID] --add_annotations [CYTOMINE_ID_PROJECT] [CYTOMINE_ID_SOFTWARE]",
     "inputs": [
         {
             "id": "ann_id",
             "value-key": "[@ANN_ID]",
+            "command-line-flag": "--@id",
             "name": "Annotation id",
             "description": "Find nuclei within these annotations",
             "set-by-server": false,
@@ -20,6 +21,7 @@
         {
             "id": "models",
             "value-key": "[@NN_MODELS]",
+            "command-line-flag": "--@id",
             "name": "NN models to use",
             "description": "Neural networks to use",
             "set-by-server": false,
@@ -41,6 +43,7 @@
         {
             "id": "cytomine_host",
             "value-key": "[@HOST]",
+            "command-line-flag": "--@id",
             "name": "Cytomine host",
             "set-by-server": true,
             "optional": false,
@@ -49,6 +52,7 @@
         {
             "id": "cytomine_public_key",
             "value-key": "[@PUBLIC_KEY]",
+            "command-line-flag": "--@id",
             "name": "Cytomine public key",
             "set-by-server": true,
             "optional": false,
@@ -57,6 +61,7 @@
         {
             "id": "cytomine_private_key",
             "value-key": "[@PRIVATE_KEY]",
+            "command-line-flag": "--@id",
             "name": "Cytomine private key",
             "set-by-server": true,
             "optional": false,
@@ -65,6 +70,7 @@
         {
             "id": "cytomine_id_project",
             "value-key": "[@PROJECT_ID]",
+            "command-line-flag": "--@id",
             "name": "Cytomine project ID",
             "set-by-server": true,
             "optional": false,
@@ -73,6 +79,7 @@
         {
             "id": "cytomine_id_software",
             "value-key": "[@SOFTWARE_ID]",
+            "command-line-flag": "--@id",
             "name": "Cytomine software ID",
             "set-by-server": true,
             "optional": false,

@@ -1,7 +1,8 @@
-# Adds application to Cytomine
+# Adds application to Cytomine. Use Uliege python client
+# Still, add github&docker hub to cytomine trusted source
 host = "http://cytomine.devel" # Replace to fit your Cytomine deployment
-public_key = "79201dc6-1a4f-4111-97a5-d8ac55adcea4" # Replace these with your admin keys
-private_key = "ba9b507b-2d70-4605-924b-c6f8b4d55b09"
+public_key = "02d65f84-c2fa-468a-9c26-53eb4ffdf81e" # Replace these with your admin keys
+private_key = "18409efd-693a-4763-aa42-7c4dca85df5a"
 from cytomine import Cytomine
 from cytomine.utilities.descriptor_reader import read_descriptor
 with Cytomine(host, public_key, private_key) as c:
